@@ -20,6 +20,8 @@ We are using HTML, Javascript, NodeJS, SuperAgent, Express, CSS .
 
 01-22-2019 9:52am - Application now has an express server with a functional GET route for the index page.
 
+01-22-2019 12:11pm - Application now has an express server with a functional POST route for the search results page.
+
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
@@ -35,13 +37,13 @@ Actual time needed to complete: 50 minutes
 
 Number and name of feature: Adding Google Books API
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 1 hour
 
-Start time: 
+Start time: 9:55am
 
-Finish time: 
+Finish time: 12:10pm
 
-Actual time needed to complete:
+Actual time needed to complete: 2 hours 15 minutes
 
 Number and name of feature: 
 

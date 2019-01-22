@@ -1,4 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
 
-<ul>
-
-</ul>
+  </head>
+  <body>
+    <% booksArr.forEach(book => { %>
+      <div>
+        <img src= "<%= book.image %>"/>
+        <h3><%= book.title %></h3>
+        <p><%= book.author %></p>
+        <p><%= book.description %></p>
+      </div>
+    <% }); %>
+  </body>
+</html>
