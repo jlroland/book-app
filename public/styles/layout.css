@@ -1,0 +1,17 @@
+div{
+  text-align: center;
+  padding:1.5em;
+}
+h4{
+  padding:.5em;
+}
+form :first-child{
+  height:2.5em;
+}
+fieldset{
+  padding:.3em;
+}
+h3{
+  padding:.7em;
+
+}
