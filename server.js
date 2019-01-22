@@ -19,11 +19,12 @@ app.get('*', (request, response) => response.status(404).send('This route does n
 
 app.listen (PORT, () => console.log(`Listening on ${PORT}`));
 
-
+function handleError(error, response) {
+  console.error(error);
+  if(response) response(500).send('Unable to complete request');
+}
 
 //Helper Functions
-
-let booksArr = [];
 
 // Book Constructor
 function Book (info){
@@ -41,6 +42,7 @@ function newSearch(request, response) {
 
 
 function createSearch(request, response){
+  let booksArr = [];
   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
   if (request.body.search[1]==='title'){url += `+intitle:${request.body.search[0]}`;}
   if (request.body.search[1]==='author'){url += `+inauthor:${request.body.search[0]}`;}
@@ -53,5 +55,6 @@ function createSearch(request, response){
     })
     .then( booksArr => {
       response.render('pages/searches/show', {booksArr});
-    });
+    })
+    //.catch(error => handleError(error, response));
 }
