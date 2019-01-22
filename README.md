@@ -15,20 +15,22 @@
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
+01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource. -->
+
+01-22-2019 9:52am - Application now has an express server with a functional GET route for the index page.
 
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
 Number and name of feature: Functional Back-end
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 45 minutes
 
-Start time: 
+Start time: 9:00am
 
-Finish time: 
+Finish time: 9:50am
 
-Actual time needed to complete:
+Actual time needed to complete: 50 minutes
 
 Number and name of feature: Adding Google Books API
 
