@@ -56,5 +56,5 @@ function createSearch(request, response){
     .then( booksArr => {
       response.render('pages/searches/show', {booksArr});
     })
-    //.catch(error => handleError(error, response));
+    // .catch(error => handleError(error, response));
 }

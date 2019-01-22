@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-
+    <title>Book Search Results</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/layout.css">
+    <link rel="stylesheet" href="./styles/modules.css">
+    <link rel="stylesheet" href="./styles/icons.css">
   </head>
   <body>
     <% booksArr.forEach(book => { %>
       <div>
         <img src= "<%= book.image %>"/>
         <h3><%= book.title %></h3>
-        <p><%= book.author %></p>
-        <p><%= book.description %></p>
+        <p class="author"><%= book.author %></p>
+        <p class="description"><%= book.description %></p>
       </div>
     <% }); %>
   </body>
