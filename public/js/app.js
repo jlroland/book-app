@@ -1,6 +1,7 @@
 'use strict';
 
-$('#form-display').on('click', function() {
-  $('.hidden').removeClass('hidden');
+$('.form-display').on('click', function() {
+  $(this).next().removeClass('hidden');
 });
+$()
 

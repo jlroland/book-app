@@ -21,8 +21,9 @@ app.set('view engine', 'ejs');
 app.get('/', displaySavedBooks);
 //app.get('/hello', newSearch);     for testing purposes
 app.get('/searches/new', newSearch);
-app.post('/searches/new/:isbn', addBook);
+app.post('/books:isbn', addBook);
 app.post('/searches/new', createSearch);
+app.get('/books/show', retrieveBooks);
 
 
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
@@ -81,6 +82,10 @@ function addBook(request, response) {
   let values = [isbn, title, author, description, image_url, bookshelf];
 
   return client.query(SQL, values)
-    .then(response.redirect('/'))
+    .then()
+    .then(response.redirect('pages/books/show'))
     .catch(error => handleError(error, response));
+}
+function retrieveBooks(request, response){
+  let sql = 'select * from saved_books'
 }

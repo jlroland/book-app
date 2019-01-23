@@ -18,18 +18,18 @@
           <p class="description"><%= book.description %></p>
           <p>ISBN: <%= book.isbn %></p>
           <p>Bookshelf: <%= book.bookshelf %></p>
-          <button id="form-display">Select Book</button>
-        </div>
-        <form class="hidden" action="/searches/new/<%= book.isbn %>" method="post">
-            <input type="text" name="image" value="<%= book.image %>" required>
+          <button id="<%= book.isbn %>" class="form-display">Select Book</button>
+          <form class="hidden" action="/books<%= book.isbn %>" method="post">
             <input type="text" name="isbn" value="<%= book.isbn %>" required>
-            <input type="text" name="title" value="<%= book.title %>" required>
             <input type="text" name="author" value="<%= book.author %>" required>
             <input type="text" name="description" value="<%= book.description %>" required>
+            <input type="text" name="title" value="<%= book.title %>" required>
             <input type="text" name="bookshelf" placeholder="Bookshelf" required>
+            <input type="text" name="image" value="<%= book.image %>" required>
             <button type="submit"> Save Book</button>
-        </form>
-      <% }); %>
+          </form>
+        </div>
+        <% }); %>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./../js/app.js"></script>
