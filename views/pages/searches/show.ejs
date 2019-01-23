@@ -2,20 +2,36 @@
 <html>
   <head>
     <title>Book Search Results</title>
-    <link rel="stylesheet" href="./styles/reset.css">
-    <link rel="stylesheet" href="./styles/base.css">
-    <link rel="stylesheet" href="./styles/layout.css">
-    <link rel="stylesheet" href="./styles/modules.css">
-    <link rel="stylesheet" href="./styles/icons.css">
+    <link rel="stylesheet" href="./../styles/reset.css">
+    <link rel="stylesheet" href="./../styles/base.css">
+    <link rel="stylesheet" href="./../styles/layout.css">
+    <link rel="stylesheet" href="./../styles/modules.css">
+    <link rel="stylesheet" href="./../styles/icons.css">
   </head>
   <body>
-    <% booksArr.forEach(book => { %>
-      <div>
-        <img src= "<%= book.image %>"/>
-        <h3><%= book.title %></h3>
-        <p class="author"><%= book.author %></p>
-        <p class="description"><%= book.description %></p>
-      </div>
-    <% }); %>
-  </body>
+    <section>
+      <% booksArr.forEach(book => { %>
+        <div>
+          <img src= "<%= book.image %>"/>
+          <h3><%= book.title %></h3>
+          <p class="author"><%= book.author %></p>
+          <p class="description"><%= book.description %></p>
+          <p>ISBN: <%= book.isbn %></p>
+          <p>Bookshelf: <%= book.bookshelf %></p>
+          <button id="form-display">Select Book</button>
+        </div>
+        <form class="hidden" action="/searches/new/<%= book.isbn %>" method="post">
+            <input type="text" name="image" value="<%= book.image %>" required>
+            <input type="text" name="isbn" value="<%= book.isbn %>" required>
+            <input type="text" name="title" value="<%= book.title %>" required>
+            <input type="text" name="author" value="<%= book.author %>" required>
+            <input type="text" name="description" value="<%= book.description %>" required>
+            <input type="text" name="bookshelf" value="Bookshelf" required>
+            <button type="submit"> Save Book</button>
+        </form>
+      <% }); %>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./../js/app.js"></script>
+    </body>
 </html>
