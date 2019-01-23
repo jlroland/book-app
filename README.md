@@ -11,7 +11,7 @@ This app allows the user to search the Google Books API and renders the top 10 r
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
-We are using HTML, Javascript, NodeJS, SuperAgent, Express, CSS .
+We are using HTML, Javascript, NodeJS, SuperAgent, Express, CSS, Postgres .
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
