@@ -3,6 +3,8 @@
 const express = require('express');
 const superagent = require('superagent');
 
+require('dotenv').config();
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -20,8 +22,7 @@ app.get('*', (request, response) => response.status(404).send('This route does n
 app.listen (PORT, () => console.log(`Listening on ${PORT}`));
 
 function handleError(error, response) {
-  console.error(error);
-  if(response) response(500).send('Unable to complete request');
+  response.render('pages/error', {error: 'The request could not be processed'});
 }
 
 //Helper Functions
@@ -29,10 +30,10 @@ function handleError(error, response) {
 // Book Constructor
 function Book (info){
   const placeHolderImage = ' https://i.imgur.com/J5LVHEL.jpg';
-  this.title= info.volumeInfo.title ? info.volumeInfo.title : 'No Title Found';
-  this.author= info.volumeInfo.authors ? info.volumeInfo.authors: 'No Author Found';
-  this.image= info.volumeInfo.imageLinks.thumbnail ? info.volumeInfo.imageLinks.thumbnail : placeHolderImage;
-  this.description= info.volumeInfo.description ? info.volumeInfo.description : 'No Description Found';
+  this.title = info.title ? info.title : 'No Title Found';
+  this.author = info.authors ? info.authors: 'No Author Found';
+  this.image = info.imageLinks.thumbnail ? info.imageLinks.thumbnail : placeHolderImage;
+  this.description = info.description ? info.description : 'No Description Found';
 }
 
 function newSearch(request, response) {
@@ -44,17 +45,17 @@ function newSearch(request, response) {
 function createSearch(request, response){
   let booksArr = [];
   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
-  if (request.body.search[1]==='title'){url += `+intitle:${request.body.search[0]}`;}
-  if (request.body.search[1]==='author'){url += `+inauthor:${request.body.search[0]}`;}
+  if (request.body.search[1] === 'title'){url += `+intitle:${request.body.search[0]}`;}
+  if (request.body.search[1] === 'author'){url += `+inauthor:${request.body.search[0]}`;}
   return superagent.get(url)
     .then(apiResponse => {
       apiResponse.body.items.map(bookResult =>{
-        booksArr.push(new Book(bookResult));
+        booksArr.push(new Book(bookResult.volumeInfo));
       })
       return booksArr;
     })
     .then( booksArr => {
-      response.render('pages/searches/show', {booksArr});
+      response.render('pages/searches/show', {booksArr:booksArr});
     })
-    // .catch(error => handleError(error, response));
+    .catch(error => handleError(error, response));
 }
