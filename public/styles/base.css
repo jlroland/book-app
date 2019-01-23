@@ -15,3 +15,7 @@ div {
   height: 25em;
 
 }
+
+.hidden {
+  display: none;
+}

@@ -22,6 +22,8 @@ We are using HTML, Javascript, NodeJS, SuperAgent, Express, CSS .
 
 01-22-2019 12:11pm - Application now has an express server with a functional POST route for the search results page.
 
+01-23-2019 11:54am - Application now has the ability to save books to the database.
+
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
@@ -44,6 +46,16 @@ Start time: 9:55am
 Finish time: 12:10pm
 
 Actual time needed to complete: 2 hours 15 minutes
+
+Number and name of feature: Save book to database
+
+Estimate of time needed to complete: 1.5 hours
+
+Start time: 8:50am
+
+Finish time: 11:50am
+
+Actual time needed to complete: 3 hours
 
 Number and name of feature: 
 
