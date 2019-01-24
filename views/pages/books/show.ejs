@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <head>
   <title>Book Search Results</title>
-  <link rel="stylesheet" href="./../styles/reset.css">
-  <link rel="stylesheet" href="./../styles/base.css">
-  <link rel="stylesheet" href="./../styles/layout.css">
-  <link rel="stylesheet" href="./../styles/modules.css">
-  <link rel="stylesheet" href="./../styles/icons.css">
+  <%- include ../../layout/head %>
 </head>
 <body>
-  <h3><%= selectedBook.title %></h3>
+  <%- include ../../layout/header %>
+  <div>
+    <img src= "<%= selectedBook.image_url %>"/>
+    
+    <h3><%= selectedBook.title %></h3>
+    <p class="author"><%= selectedBook.author %></p>
+    <p class="description"><%= selectedBook.description %></p>
+    <p>ISBN: <%= selectedBook.isbn %></p>
+    <p>Bookshelf: <%= selectedBook.bookshelf %></p>
+    <button id="<%= selectedBook.isbn %>" class="form-display">Update</button>
+
+  </div>
+  
+
 </body>

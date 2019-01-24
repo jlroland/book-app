@@ -8,6 +8,15 @@ h4{
 form :first-child{
   height:2.5em;
 }
+nav {
+  width: 100%;
+}
+#nav-ul{
+  width:100%;
+}
+#nav-li{
+  width:25%;
+}
 fieldset{
   padding:.3em;
 }
