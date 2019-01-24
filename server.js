@@ -3,6 +3,7 @@
 const express = require('express');
 const superagent = require('superagent');
 const pg = require('pg');
+const methodOverride = require('method-override');
 
 require('dotenv').config();
 
@@ -15,6 +16,14 @@ client.on('err', err => console.log(err));
 
 app.use(express.static('./public'));
 app.use(express.urlencoded({extended: true}));
+app.use(
+  methodOverride(request => {
+    if (request.body && typeof request.body ==='object' && '_method' in request.body){
+      let method = request.body._method;
+      delete request.body._method;
+      return method;
+    }
+  }));
 
 app.set('view engine', 'ejs');
 
@@ -23,6 +32,7 @@ app.get('/searches', newSearch);
 app.post('/searches', createSearch);
 app.post('/books', addBook);
 app.get('/books/:id', retrieveBook);
+app.put('/books/:id',updateBooks);
 
 
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
@@ -99,4 +109,14 @@ function retrieveBook(request, response){
   return client.query(SQL, values)
     .then(result => response.render('pages/books/show', {selectedBook: result.rows[0]}))
     .catch(handleError);
+}
+function updateBooks(request, response){
+  let {isbn, title, author, description, image_url, bookshelf} = request.body;
+  let SQL = `UPDATE saved_books SET isbn=$1, title=$2, author=$3, description=$4, image_url=$5, bookshelf=$6 WHERE id=$7;`;
+  let values=[isbn, title, author, description, image_url, bookshelf, request.params.id];
+  console.log('ln 117:',values);
+  return client.query(SQL, values)
+    // .then(console.log)
+    .then(()=>response.redirect(`/`))
+    .catch(err=> handleError(err,response));
 }
