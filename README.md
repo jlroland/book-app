@@ -24,6 +24,8 @@ We are using HTML, Javascript, NodeJS, SuperAgent, Express, CSS, Postgres .
 
 01-23-2019 11:54am - Application now has the ability to save books to the database.
 
+01-24-2019 10:18am - Application will now redirect user to details page of newly-added book (retrieving & routing done, still building out page).
+
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
@@ -56,6 +58,16 @@ Start time: 8:50am
 Finish time: 11:50am
 
 Actual time needed to complete: 3 hours
+
+Number and name of feature: Retrieve DB Info for Added Book & Redirect to Details Page
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 9:00am
+
+Finish time: 10:15am
+
+Actual time needed to complete: 1 hour 15 minutes
 
 Number and name of feature: 
 

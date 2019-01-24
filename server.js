@@ -21,8 +21,8 @@ app.set('view engine', 'ejs');
 app.get('/', displaySavedBooks);
 app.get('/searches', newSearch);
 app.post('/searches', createSearch);
-app.post('/books/:isbn', addBook);
-app.get('/books/show', retrieveBooks);
+app.post('/books', addBook);
+app.get('/books/:id', retrieveBook);
 
 
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
@@ -76,14 +76,25 @@ function displaySavedBooks (request, response) {
 
 function addBook(request, response) {
   let {isbn, title, author, description, image_url, bookshelf} = request.body;
-  console.log(request.body);
-  let SQL = `INSERT INTO saved_books(isbn, title, author, description, image_url, bookshelf) VALUES($1, $2, $3, $4, $5, $6);`;
+  let SQL = `INSERT INTO saved_books(isbn, title, author, description, image_url, bookshelf) VALUES($1, $2, $3, $4, $5, $6) RETURNING id;`;
   let values = [isbn, title, author, description, image_url, bookshelf];
 
   return client.query(SQL, values)
-    .then(response.redirect('/'))
+    .then(() => {
+      SQL = 'SELECT * FROM saved_books WHERE isbn=$1;';
+      values = [request.body.isbn];
+      return client.query(SQL, values)
+        .then(result => response.redirect(`/books/${result.rows[0].id}`))
+        .catch(handleError);
+    })
     .catch(error => handleError(error, response));
 }
-function retrieveBooks(request, response){
-  let SQL = 'select * from saved_books'
+
+function retrieveBook(request, response){
+  let SQL = 'SELECT DISTINCT * from saved_books WHERE id=$1;';
+  let values = [request.params.id];
+
+  return client.query(SQL, values)
+    .then(result => response.render('pages/books/show', {selectedBook: result.rows[0]}))
+    .catch(handleError);
 }
