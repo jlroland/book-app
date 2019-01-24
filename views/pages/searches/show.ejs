@@ -12,20 +12,20 @@
     <section>
       <% booksArr.forEach(book => { %>
         <div>
-          <img src= "<%= book.image %>"/>
+          <img src= "<%= book.image_url %>"/>
           <h3><%= book.title %></h3>
           <p class="author"><%= book.author %></p>
           <p class="description"><%= book.description %></p>
           <p>ISBN: <%= book.isbn %></p>
           <p>Bookshelf: <%= book.bookshelf %></p>
           <button id="<%= book.isbn %>" class="form-display">Select Book</button>
-          <form class="hidden" action="/books<%= book.isbn %>" method="post">
+          <form class="hidden" action="/books/<%= book.isbn %>" method="post">
             <input type="text" name="isbn" value="<%= book.isbn %>" required>
             <input type="text" name="author" value="<%= book.author %>" required>
             <input type="text" name="description" value="<%= book.description %>" required>
             <input type="text" name="title" value="<%= book.title %>" required>
             <input type="text" name="bookshelf" placeholder="Bookshelf" required>
-            <input type="text" name="image" value="<%= book.image %>" required>
+            <input type="text" name="image_url" value="<%= book.image_url %>" required>
             <button type="submit"> Save Book</button>
           </form>
         </div>

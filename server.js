@@ -19,10 +19,9 @@ app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
 app.get('/', displaySavedBooks);
-//app.get('/hello', newSearch);     for testing purposes
-app.get('/searches/new', newSearch);
-app.post('/books:isbn', addBook);
-app.post('/searches/new', createSearch);
+app.get('/searches', newSearch);
+app.post('/searches', createSearch);
+app.post('/books/:isbn', addBook);
 app.get('/books/show', retrieveBooks);
 
 
@@ -41,7 +40,7 @@ function Book (info){
   const placeHolderImage = ' https://i.imgur.com/J5LVHEL.jpg';
   this.title = info.title ? info.title : 'No Title Found';
   this.author = info.authors ? info.authors: 'No Author Found';
-  this.image = info.imageLinks.thumbnail ? info.imageLinks.thumbnail : placeHolderImage;
+  this.image_url = info.imageLinks.thumbnail ? info.imageLinks.thumbnail : placeHolderImage;
   this.description = info.description ? info.description : 'No Description Found';
   this.isbn = info.industryIdentifiers[0].identifier ? info.industryIdentifiers[0].identifier : 'No ISBN found';
   this.bookshelf = '';
@@ -82,10 +81,9 @@ function addBook(request, response) {
   let values = [isbn, title, author, description, image_url, bookshelf];
 
   return client.query(SQL, values)
-    .then()
-    .then(response.redirect('pages/books/show'))
+    .then(response.redirect('/'))
     .catch(error => handleError(error, response));
 }
 function retrieveBooks(request, response){
-  let sql = 'select * from saved_books'
+  let SQL = 'select * from saved_books'
 }
