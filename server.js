@@ -71,7 +71,10 @@ function createSearch(request, response){
 }
 
 function displaySavedBooks (request, response) {
-  response.render('pages/index');
+  let SQL = 'SELECT * FROM saved_books;';
+  return client.query(SQL)
+    .then (result => response.render('pages/index', {bookLib:result.rows}))
+    .catch(handleError);
 }
 
 function addBook(request, response) {
@@ -93,7 +96,6 @@ function addBook(request, response) {
 function retrieveBook(request, response){
   let SQL = 'SELECT DISTINCT * from saved_books WHERE id=$1;';
   let values = [request.params.id];
-
   return client.query(SQL, values)
     .then(result => response.render('pages/books/show', {selectedBook: result.rows[0]}))
     .catch(handleError);

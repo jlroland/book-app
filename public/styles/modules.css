@@ -17,6 +17,20 @@ p:last-child{
   /* overflow:scroll; */
   overflow-y: scroll; overflow-x:hidden;
 }
+
+#nav-ul{
+  display:flex;
+  flex-direction: row;
+  background-color: white;
+}
+
+a{
+  
+  font-size: 1.5 em;
+}
+#row-count {
+  color:white;
+}
 .author {
   color:#333;
   font-size: 1.4em;
