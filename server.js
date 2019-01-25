@@ -31,8 +31,8 @@ app.get('/', displaySavedBooks);
 app.get('/searches', newSearch);
 app.post('/searches', createSearch);
 app.post('/books', addBook);
-app.get('/books/:id', retrieveBook);
 app.put('/books/:id',updateBooks);
+app.get('/books/:id', retrieveBook);
 
 
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
@@ -40,6 +40,7 @@ app.get('*', (request, response) => response.status(404).send('This route does n
 app.listen (PORT, () => console.log(`Listening on ${PORT}`));
 
 function handleError(error, response) {
+  console.log(error);
   response.render('pages/error', {error: 'The request could not be processed'});
 }
 
@@ -77,7 +78,7 @@ function createSearch(request, response){
     .then( booksArr => {
       response.render('pages/searches/show', {booksArr:booksArr});
     })
-    .catch(error => handleError(error, response));
+    .catch(handleError);
 }
 
 function displaySavedBooks (request, response) {
@@ -100,7 +101,7 @@ function addBook(request, response) {
         .then(result => response.redirect(`/books/${result.rows[0].id}`))
         .catch(handleError);
     })
-    .catch(error => handleError(error, response));
+    .catch(handleError);
 }
 
 function retrieveBook(request, response){
@@ -112,11 +113,11 @@ function retrieveBook(request, response){
 }
 function updateBooks(request, response){
   let {isbn, title, author, description, image_url, bookshelf} = request.body;
-  let SQL = `UPDATE saved_books SET isbn=$1, title=$2, author=$3, description=$4, image_url=$5, bookshelf=$6 WHERE id=$7;`;
+  let SQL = `UPDATE saved_books SET isbn=$1, title=$2, author=$3, description=$4, image_url=$5, bookshelf=$6 WHERE id=$7 RETURNING id;`;
   let values=[isbn, title, author, description, image_url, bookshelf, request.params.id];
-  console.log('ln 117:',values);
   return client.query(SQL, values)
-    // .then(console.log)
-    .then(()=>response.redirect(`/`))
-    .catch(err=> handleError(err,response));
+    .then(result=>{
+      response.redirect(`/books/${result.rows[0].id}`)
+    })
+    .catch(handleError);
 }
