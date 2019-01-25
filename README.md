@@ -4,19 +4,18 @@
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
-This app allows the user to search the Google Books API and renders the top 10 results.
+This app allows the user to search the Google Books API and renders the top 10 results. The app also gives the user the ability to maintain a collection of selected books (add, modify and delete).
 
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
+To build this app on their own, a user must set up their front-end files (.ejs, .js, .css) to display content and set up their server.js file to run back-end processes. Using Node.js, the user should install (and require in their server file) Express, EJS, Postgres, SuperAgent, dotenv and method-override since these are dependencies for their server file. The user should specify (in their server file) a port and use the middleware functions express.static and express.urlencoded; this will facilitate communication between front-end and back-end. They should set EJS as their view engine in the server file to allow rendering of .ejs files. There should also be a connection to Postgres (which will include a DATABASE_URL) to allow SQL queries when needed.
+
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
-We are using HTML, Javascript, NodeJS, SuperAgent, Express, CSS, Postgres .
+
+We are using HTML, CSS, Javascript and jQuery for front-end development. We are using Node.js, Express, EJS, SuperAgent and PostgreSQL for back-end development.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource. -->
 
 01-22-2019 9:52am - Application now has an express server with a functional GET route for the index page.
 
@@ -26,8 +25,13 @@ We are using HTML, Javascript, NodeJS, SuperAgent, Express, CSS, Postgres .
 
 01-24-2019 10:18am - Application will now redirect user to details page of newly-added book (retrieving & routing done, still building out page).
 
+01-25-2019 7:08am - Application now has the ability to update book details and save changes to the database.
+
 ## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
+David Chambers was instrumental in debugging at various stages of app development.
+
+##Time Estimates
 
 Number and name of feature: Functional Back-end
 
@@ -68,6 +72,16 @@ Start time: 9:00am
 Finish time: 10:15am
 
 Actual time needed to complete: 1 hour 15 minutes
+
+Number and name of feature: Add Update Feature to Book Details
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 12:15pm
+
+Finish time: 1:30pm
+
+Actual time needed to complete: 1.5 hours (includes 15 minutes of debugging on morning of 01-25-2019)
 
 Number and name of feature: 
 
