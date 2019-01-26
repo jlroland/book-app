@@ -1,13 +1,12 @@
 # Book App
 
 **Author**: Jessica Roland & Tim Schoen
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.3.1
 
 ## Overview
 This app allows the user to search the Google Books API and renders the top 10 results. The app also gives the user the ability to maintain a collection of selected books (add, modify and delete).
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
 To build this app on their own, a user must set up their front-end files (.ejs, .js, .css) to display content and set up their server.js file to run back-end processes. Using Node.js, the user should install (and require in their server file) Express, EJS, Postgres, SuperAgent, dotenv and method-override since these are dependencies for their server file. The user should specify (in their server file) a port and use the middleware functions express.static and express.urlencoded; this will facilitate communication between front-end and back-end. They should set EJS as their view engine in the server file to allow rendering of .ejs files. There should also be a connection to Postgres (which will include a DATABASE_URL) to allow SQL queries when needed.
 
@@ -83,12 +82,12 @@ Finish time: 1:30pm
 
 Actual time needed to complete: 1.5 hours (includes 15 minutes of debugging on morning of 01-25-2019)
 
-Number and name of feature: 
+Number and name of feature: Add Delete Feature
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 30 minutes
 
-Start time: 
+Start time: 2:25pm
 
-Finish time: 
+Finish time: 2:50pm
 
-Actual time needed to complete:
+Actual time needed to complete: 25 minutes

@@ -33,13 +33,13 @@ app.post('/searches', createSearch);
 app.post('/books', addBook);
 app.put('/books/:id',updateBooks);
 app.get('/books/:id', retrieveBook);
-
+app.delete('/books/:id', removeBook);
 
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
 app.listen (PORT, () => console.log(`Listening on ${PORT}`));
 
-function handleError(error, response) {
+function handleError(error, response){
   console.log(error);
   response.render('pages/error', {error: 'The request could not be processed'});
 }
@@ -78,14 +78,14 @@ function createSearch(request, response){
     .then( booksArr => {
       response.render('pages/searches/show', {booksArr:booksArr});
     })
-    .catch(handleError);
+    .catch(error => handleError(error, response));
 }
 
 function displaySavedBooks (request, response) {
   let SQL = 'SELECT * FROM saved_books;';
   return client.query(SQL)
     .then (result => response.render('pages/index', {bookLib:result.rows}))
-    .catch(handleError);
+    .catch(error => handleError(error, response));
 }
 
 function addBook(request, response) {
@@ -99,9 +99,9 @@ function addBook(request, response) {
       values = [request.body.isbn];
       return client.query(SQL, values)
         .then(result => response.redirect(`/books/${result.rows[0].id}`))
-        .catch(handleError);
+        .catch(error => handleError(error, response));
     })
-    .catch(handleError);
+    .catch(error => handleError(error, response));
 }
 
 function retrieveBook(request, response){
@@ -109,7 +109,7 @@ function retrieveBook(request, response){
   let values = [request.params.id];
   return client.query(SQL, values)
     .then(result => response.render('pages/books/show', {selectedBook: result.rows[0]}))
-    .catch(handleError);
+    .catch(error => handleError(error, response));
 }
 function updateBooks(request, response){
   let {isbn, title, author, description, image_url, bookshelf} = request.body;
@@ -119,5 +119,14 @@ function updateBooks(request, response){
     .then(result=>{
       response.redirect(`/books/${result.rows[0].id}`)
     })
-    .catch(handleError);
+    .catch(error => handleError(error, response));
+}
+
+function removeBook (request, response) {
+  let SQL = `DELETE FROM saved_books where id=$1;`;
+  let values = [`${request.params.id}`];
+
+  return client.query(SQL, values)
+    .then(() => response.redirect('/'))
+    .catch(error => handleError(error, response));
 }
