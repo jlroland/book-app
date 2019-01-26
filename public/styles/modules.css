@@ -1,6 +1,6 @@
 h3 {
   color:white;
-  font-size: 2.0em;
+  font-size: 1.8em;
 }
 
 h4 {
@@ -19,21 +19,33 @@ span {
 }
 
 #nav-ul {
+  background-color: #222;
+}
+
+.nav-li {
+  padding: .3em;
   background-color: white;
+  text-align: center;
 }
 
 a {
   font-size: 1.5 em;
 }
 
+.details-button {
+  height: 2em;
+  line-height: .3em;
+}
+
 #row-count {
+  padding: .5em;
   color:white;
   height: 1.5em;
 }
 
 .author {
   color:#333;
-  font-size: 1.4em;
+  font-size: 1.2em;
   padding-bottom:.6em;
 }
 

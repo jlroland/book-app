@@ -6,16 +6,16 @@
   </head>
   <body>
     <%- include ../../layout/header %>
-    <section>
+    <section class="all-books">
       <% booksArr.forEach(book => { %>
-        <div>
+        <div class="book-card">
           <img src= "<%= book.image_url %>"/>
           <h3><%= book.title %></h3>
           <p class="author"><%= book.author %></p>
           <p class="description"><%= book.description %></p>
           <p>ISBN: <%= book.isbn %></p>
           <p>Bookshelf: <%= book.bookshelf %></p>
-          <button id="<%= book.isbn %>" class="form-display">Select Book</button>
+          <button class="form-display details-button">Select Book</button>
           <form class="hidden" action="/books" method="post">
             <input type="text" name="isbn" value="<%= book.isbn %>" required>
             <input type="text" name="author" value="<%= book.author %>" required>

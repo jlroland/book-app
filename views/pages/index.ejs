@@ -7,15 +7,16 @@
     <%- include ../layout/header %>
 
     <p id =row-count>  You have <%= bookLib.length %> books in your collection.</p>
-  
-    <% bookLib.forEach(book => { %>
-      <div>
+    <div class="all-books">
+      <% bookLib.forEach(book => { %>
+      <div class="book-card">
         <img src= "<%= book.image_url %>"/>
         <h3><%= book.title %></h3>
         <p class="author"><%= book.author %></p>     
-        <button id="<%= book.id %>" class="form-display">
-          <a  href="/books/<%= book.id %>" >View Details</a></button>
+        <button class="details-button" class="form-display">
+          <a href="/books/<%= book.id %>" >View Details</a></button>
       </div>
       <% }); %>
+    </div>
   </body>
 </html>

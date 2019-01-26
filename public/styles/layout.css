@@ -3,17 +3,29 @@ div {
   flex-direction: column;
   text-align: center;
   align-items: center;
-  margin:.2em;
+  width: 10em;
+  margin: 1em;
   padding:1.5em;
-  height: 25em;
+  height: 35em;
 }
 
-div > img {
-  width: 30%;
+.all-books {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  width: 95%;
+  height: 40em;
 }
 
-div > button {
-  width: 20%;
+.book-card {
+  justify-content: space-between;
+}
+
+#single-book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 45em;
 }
 
 h4 {
@@ -27,6 +39,7 @@ nav {
 #nav-ul {
   display:flex;
   flex-direction: row;
+  justify-content: space-evenly;
   width:100%;
   height: 2em;
 }
