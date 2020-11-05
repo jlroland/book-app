@@ -1,5 +1,5 @@
 {
-  "name": "book_app",
+  "name": "book-app",
   "version": "1.0.0",
   "description": "Book search using Google Books API",
   "main": "server.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jroland415/book_app.git"
+    "url": "git+https://github.com/jlroland/book-app.git"
   },
   "author": "Jessica Roland & Tim Schoen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jroland415/book_app/issues"
+    "url": "https://github.com/jlroland/book-app/issues"
   },
-  "homepage": "https://github.com/jroland415/book_app#readme",
+  "homepage": "https://github.com/jlroland/book-app#readme",
   "dependencies": {
     "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
