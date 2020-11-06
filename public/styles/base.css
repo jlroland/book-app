@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Francois+One&display=swap');
+
 body {
-  /* background-color:#555; */
   background-image: url("../j-zamora-GWOTvo3qq7U-unsplash.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
   background-position: center;
+  font-family: 'Francois One', sans-serif;
 }
 
 main {
