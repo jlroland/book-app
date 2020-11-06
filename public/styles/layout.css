@@ -6,7 +6,6 @@ div {
   width: 10em;
   margin: 1em;
   padding:1.5em;
-  height: 35em;
 }
 
 .all-books {
@@ -14,11 +13,11 @@ div {
   flex-flow: row wrap;
   justify-content: space-evenly;
   width: 95%;
-  height: 40em;
 }
 
 .book-card {
   justify-content: space-between;
+  height: 25em;
 }
 
 #single-book {
@@ -41,7 +40,7 @@ nav {
   flex-direction: row;
   justify-content: space-evenly;
   width:100%;
-  height: 2em;
+  height: 3em;
 }
 
 .nav-li {
