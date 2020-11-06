@@ -1,5 +1,9 @@
 body {
-  background-color:#555;
+  /* background-color:#555; */
+  background-image: url("../j-zamora-GWOTvo3qq7U-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 main {
