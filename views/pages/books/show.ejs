@@ -6,8 +6,8 @@
   </head>
   <body>
     <%- include ../../layout/header %>
-    <div id="single-book">
-      <div class="book-card">
+    <div>
+      <div id="single-book">
         <img src= "<%= selectedBook.image_url %>"/>
         <h3><%= selectedBook.title %></h3>
         <p class="author"><%= selectedBook.author %></p>
@@ -19,11 +19,10 @@
         <form class="hidden" action="/books/<%=selectedBook.id%>" method="post">
           <input type="hidden" name="_method" value="put">
           <input type="text" name="isbn" value="<%= selectedBook.isbn %>" required>
+          <input type="text" name="title" value="<%= selectedBook.title %>" required>
           <input type="text" name="author" value="<%= selectedBook.author %>" required>
           <input type="text" name="description" value="<%= selectedBook.description %>" required>
-          <input type="text" name="title" value="<%= selectedBook.title %>" required>
           <input type="text" name="bookshelf" value="<%=selectedBook.bookshelf %>" required>
-          <input type="text" name="image_url" value="<%= selectedBook.image_url %>" required>
           <button class="details-button" type="submit"> Update Book</button>
         </form>
         <form action="/books/<%=selectedBook.id%>" method="post">
