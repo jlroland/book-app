@@ -112,9 +112,9 @@ function retrieveBook(request, response){
     .catch(error => handleError(error, response));
 }
 function updateBooks(request, response){
-  let {isbn, title, author, description, image_url, bookshelf} = request.body;
-  let SQL = `UPDATE saved_books SET isbn=$1, title=$2, author=$3, description=$4, image_url=$5, bookshelf=$6 WHERE id=$7 RETURNING id;`;
-  let values=[isbn, title, author, description, image_url, bookshelf, request.params.id];
+  let {isbn, title, author, description, bookshelf} = request.body;
+  let SQL = `UPDATE saved_books SET isbn=$1, title=$2, author=$3, description=$4, bookshelf=$5 WHERE id=$6 RETURNING id;`;
+  let values=[isbn, title, author, description, bookshelf, request.params.id];
   return client.query(SQL, values)
     .then(result=>{
       response.redirect(`/books/${result.rows[0].id}`)
