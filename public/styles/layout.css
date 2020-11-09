@@ -8,6 +8,13 @@ div {
   padding:1.5em;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  text-align:center;
+  margin-top: 5%;
+}
+
 .all-books {
   display: flex;
   flex-flow: row wrap;
@@ -35,6 +42,10 @@ div {
 
 #single-book * {
   margin: .5em;
+}
+
+#new-search-form *{
+  margin-top: 1em;
 }
 
 h4 {

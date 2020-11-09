@@ -8,7 +8,7 @@
     <%- include ../../layout/header %>
     <section class="all-books">
       <% booksArr.forEach(book => { %>
-        <div class="book-card">
+        <div class="search-card">
           <img src= "<%= book.image_url %>"/>
           <h3><%= book.title %></h3>
           <p class="author"><%= book.author %></p>
@@ -22,7 +22,7 @@
             <input type="text" name="description" value="<%= book.description %>" required>
             <input type="text" name="title" value="<%= book.title %>" required>
             <input type="text" name="bookshelf" placeholder="Bookshelf" required>
-            <input type="text" name="image_url" value="<%= book.image_url %>" required>
+            <input type="text" name="image_url" value="<%= book.image_url %>" readonly>
             <button type="submit"> Save Book</button>
           </form>
         </div>
