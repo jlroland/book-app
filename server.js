@@ -52,7 +52,8 @@ function Book (info){
   this.title = info.title ? info.title : 'No Title Found';
   this.author = info.authors ? info.authors: 'No Author Found';
   this.image_url = info.imageLinks.thumbnail ? info.imageLinks.thumbnail : placeHolderImage;
-  this.description = info.description ? info.description : 'No Description Found';
+  // this.description = info.description ? info.description : 'No Description Found';
+  this.description = 'test description entry'
   this.isbn = info.industryIdentifiers[0].identifier ? info.industryIdentifiers[0].identifier : 'No ISBN found';
   this.bookshelf = '';
 }
