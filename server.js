@@ -48,7 +48,7 @@ function handleError(error, response){
 
 // Book Constructor
 function Book (info){
-  const placeHolderImage = ' https://i.imgur.com/J5LVHEL.jpg';
+  const placeHolderImage = 'https://i.imgur.com/J5LVHEL.jpg';
   this.title = info.title ? info.title : 'No Title Found';
   this.author = info.authors ? info.authors: 'No Author Found';
   this.image_url = info.imageLinks.thumbnail ? info.imageLinks.thumbnail : placeHolderImage;
