@@ -36,6 +36,7 @@ span {
 }
 
 .description {
+  width: 10em;
   height: 4em;
   overflow: scroll;
 }
