@@ -50,12 +50,10 @@ function handleError(error, response){
 function Book (info){
   const placeHolderImage = 'https://i.imgur.com/J5LVHEL.jpg';
   this.title = info.title ? info.title : 'No Title Found';
-  this.author = info.authors ? info.authors: 'No Author Found';
-  this.image_url = info.imageLinks.thumbnail ? info.imageLinks.thumbnail : placeHolderImage;
-  // this.description = info.description ? info.description : 'No Description Found';
-  this.description = 'test description entry'
-  // this.isbn = info.industryIdentifiers[0].identifier ? info.industryIdentifiers[0].identifier : 'No ISBN found';
-  this.isbn = 'test isbn'
+  this.author = info.authors ? info.authors : 'No Author Found';
+  this.image_url =  (info.imageLinks && info.imageLinks.thumbnail) ? info.imageLinks.thumbnail : placeHolderImage;
+  this.description = info.description ? info.description : 'No Description Found';
+  this.isbn = (info.industryIdentifiers && info.industryIdentifiers[0].identifier) ? info.industryIdentifiers[0].identifier : 'No ISBN found';
   this.bookshelf = '';
 }
 
@@ -67,7 +65,7 @@ function newSearch(request, response) {
 
 function createSearch(request, response){
   let booksArr = [];
-  let url = 'https://www.googleapis.com/books/v1/volumes?fields=items/volumeInfo(title,authors,imageLinks)&q=';
+  let url = 'https://www.googleapis.com/books/v1/volumes?q=';
   if (request.body.search[1] === 'title'){url += `+intitle:${request.body.search[0]}`;}
   if (request.body.search[1] === 'author'){url += `+inauthor:${request.body.search[0]}`;}
   url += '&country=US'

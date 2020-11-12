@@ -3,7 +3,7 @@ div {
   flex-direction: column;
   text-align: center;
   align-items: center;
-  width: 10em;
+  width: 12em;
   margin: 1em;
   padding:1.5em;
 }
@@ -74,4 +74,9 @@ fieldset {
 
 h3 {
   padding:.7em;
+}
+
+img {
+  width: 128px;
+  height: 181px;
 }
