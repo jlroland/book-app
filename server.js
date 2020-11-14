@@ -49,11 +49,12 @@ function handleError(error, response){
 // Book Constructor
 function Book (info){
   const placeHolderImage = 'https://i.imgur.com/J5LVHEL.jpg';
-  this.title = info.title ? info.title : 'No Title Found';
-  this.author = info.authors ? info.authors : 'No Author Found';
-  this.image_url =  (info.imageLinks && info.imageLinks.thumbnail) ? info.imageLinks.thumbnail : placeHolderImage;
-  this.description = info.description ? info.description : 'No Description Found';
-  this.isbn = (info.industryIdentifiers && info.industryIdentifiers[0].identifier) ? info.industryIdentifiers[0].identifier : 'No ISBN found';
+  this.google_id = info.id;
+  this.title = info.volumeInfo.title ? info.volumeInfo.title : 'No Title Found';
+  this.author = info.volumeInfo.authors ? info.volumeInfo.authors : 'No Author Found';
+  this.image_url =  (info.volumeInfo.imageLinks && info.volumeInfo.imageLinks.thumbnail) ? info.volumeInfo.imageLinks.thumbnail : placeHolderImage;
+  this.description = info.volumeInfo.description ? info.volumeInfo.description : 'No Description Found';
+  this.isbn = (info.volumeInfo.industryIdentifiers && info.volumeInfo.industryIdentifiers[0].identifier) ? info.volumeInfo.industryIdentifiers[0].identifier : 'No ISBN found';
   this.bookshelf = '';
 }
 
@@ -72,7 +73,7 @@ function createSearch(request, response){
   return superagent.get(url)
     .then(apiResponse => {
       apiResponse.body.items.map(bookResult =>{
-        booksArr.push(new Book(bookResult.volumeInfo));
+        booksArr.push(new Book(bookResult));
       })
       return booksArr;
     })
@@ -90,9 +91,9 @@ function displaySavedBooks (request, response) {
 }
 
 function addBook(request, response) {
-  let {isbn, title, author, description, image_url, bookshelf} = request.body;
-  let SQL = `INSERT INTO saved_books(isbn, title, author, description, image_url, bookshelf) VALUES($1, $2, $3, $4, $5, $6) RETURNING id;`;
-  let values = [isbn, title, author, description, image_url, bookshelf];
+  let {isbn, author, description, title, bookshelf, google_id, image_url} = request.body;
+  let SQL = `INSERT INTO saved_books(google_id, isbn, title, author, description, image_url, bookshelf) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING id;`;
+  let values = [google_id, isbn, title, author, description, image_url, bookshelf];
 
   return client.query(SQL, values)
     .then(() => {

@@ -14,7 +14,6 @@
           <p class="author"><%= book.author %></p>
           <p class="description"><%= book.description %></p>
           <p>ISBN: <%= book.isbn %></p>
-          <p>Bookshelf: <%= book.bookshelf %></p>
           <button class="form-display details-button">Select Book</button>
           <form class="hidden" action="/books" method="post">
             <input type="text" name="isbn" value="<%= book.isbn %>" required>
@@ -22,7 +21,8 @@
             <input type="text" name="description" value="<%= book.description %>" required>
             <input type="text" name="title" value="<%= book.title %>" required>
             <input type="text" name="bookshelf" placeholder="Bookshelf" required>
-            <input type="text" name="image_url" value="<%= book.image_url %>" readonly>
+            <input type="hidden" name="google_id" value="<%= book.google_id %>" readonly>
+            <input type="hidden" name="image_url" value="<%= book.image_url %>" readonly>
             <button type="submit"> Save Book</button>
           </form>
         </div>

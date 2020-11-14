@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS saved_books;
 
 CREATE TABLE saved_books (
   id SERIAL PRIMARY KEY,
+  google_id VARCHAR(255),
   isbn NUMERIC (13, 0),
   title VARCHAR(255),
   author VARCHAR(255),
